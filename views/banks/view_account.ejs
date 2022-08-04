@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<% if(is_withdraw){ %>
+    <h2>Withdraw Page</h2>
+    <p>Balance : <%= current_user.balance %></p>
+    <form action="/update-account/<%= current_user.account_number %>?_method=PATCH" method="post">
+        <input type="hidden" name="transaction" value="withdraw">
+        <input type="text" name="amount" id="amount" value="">
+        <button type="submit">withdraw</button>
+    </form>
+<% }
+else{ %>
+    <h2>Deposit Page</h2>
+    <p>Balance : <%= current_user.balance %></p>
+    <form action="/update-account/<%= current_user.account_number %>?_method=PATCH" method="post">
+        <input type="hidden" name="transaction" value="deposit">
+        <input type="text" name="amount" id="amount" value="">
+        <button type="submit">deposit</button>
+    </form>
+<% } %>
+</body>
+</html>
